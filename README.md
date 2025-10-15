@@ -8,6 +8,38 @@ This project is a lightweight, portable, cheap, and effective response to malici
 
 The Drone C-RAM features rotating up to 25rpm, drone detection with the Raspberry Pi AI camera, tracking / target leading capabilites, and precise motor control with a software proportional-integral-derivative (PID) controller.
 
+The target-leading mechanism is based off of the target's position and speed. The basic idea is best illustrated with pseudo-code: 
+
+```c
+  int x = 250;
+  int y = 300;
+  int dx = 0;
+  int dy = 0;
+
+while(i) {
+  target(x, y); // A target at x, y
+  x = x + dx;
+  y = y + dy;
+  if(x > 200){ // causes the movement of the target
+    dx--;
+  }else if(x < 200){
+    dx++;
+  }
+  if(y > 200){
+    dy--;
+  }else if(y < 200){
+    dy++;
+  }
+  // This crosshair leads the target by an arbitrary "10" units.
+  // This var would change if you wanted to lead the target by more or less.
+  // The crosshair currently does not take into account the movement curve
+  // of the target.
+  crosshair(x+10*dx, y+10*dy, x+10*dx, y+10*dy);
+}
+```
+
+![target-leading](Media/proposed-tracking-method.gif)
+
 # Hardware Requirements
 
 * 3D printer. Ideally with >13" print height.
