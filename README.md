@@ -1,14 +1,21 @@
-**Going to rewrite this to sound more like a project report rather than a guide**
+# Project Overview
 
-# Overview
+**Introduction**
 
 This project is a lightweight, portable, cheap, and effective response to malicious drones. Below you'll find a more in depth look at the requirements for this project, as well as other information necessary for operation and installation (subject to change. just coming up with stuff)
 
-# Features
+**Challenges and Solutions**
+
+**Timeline**
+
+**Testing and Results**
+
+
+# Project Capabilities
 
 The Drone C-RAM features rotating up to 25rpm, drone detection with the Raspberry Pi AI camera, tracking / target leading capabilites, and precise motor control with a software proportional-integral-derivative (PID) controller.
 
-The target-leading mechanism is based off of the target's position and speed. The basic idea is best illustrated with pseudo-code: 
+The target-leading mechanism is based off of the target's position and speed. The basic idea is best described below (pseudo code): 
 
 ```c
   int x = 250;
@@ -40,11 +47,8 @@ while(i) {
 
 ![target-leading](Media/proposed-tracking-method.gif)
 
-# Hardware Requirements
+# Hardware Components
 
-* 3D printer. Ideally with >13" print height.
-* 3D printer filament
-* Materials to program your Raspberry Pi with (monitor, keyboard, etc.)
 * (5) 5mm x 250mm 304 Stainless Steel Solid Round Rod [(+)](https://www.amazon.com/dp/B082ZNJR7D?ref=ppx_yo2ov_dt_b_fed_asin_title&th=1)
 * (12) Set Screw Collars [(+)](https://www.amazon.com/dp/B0F9P5CNSL?ref=ppx_yo2ov_dt_b_fed_asin_title&th=1)
 * (15) Ball Bearings 5mm Bore 16mm OD [(+)](https://www.amazon.com/dp/B0CJFSBRTJ?ref=ppx_yo2ov_dt_b_fed_asin_title&th=1)
@@ -60,18 +64,18 @@ while(i) {
 * Full automatic arisoft gun (some prints made specific to our model [(+)](https://www.amazon.com/dp/B07XJ9K5KT?ref=cm_sw_r_cp_ud_dp_9KHN7P3S4Y6VA8SVB0YQ&ref_=cm_sw_r_cp_ud_dp_9KHN7P3S4Y6VA8SVB0YQ&social_share=cm_sw_r_cp_ud_dp_9KHN7P3S4Y6VA8SVB0YQ&th=1))
 * Slip joint [(+)](https://www.amazon.com/dp/B07XJ9K5KT?ref=cm_sw_r_cp_ud_dp_9KHN7P3S4Y6VA8SVB0YQ&ref_=cm_sw_r_cp_ud_dp_9KHN7P3S4Y6VA8SVB0YQ&social_share=cm_sw_r_cp_ud_dp_9KHN7P3S4Y6VA8SVB0YQ&th=1)
 
-# Software Requirements
+# Software Dependencies
 
 * 
 
-# Installation
+# Implementation
 
 ## Wiring Diagram
 
 
 ## CAD Files
 
-We used a total of seven 3D printed parts on this project. You can find them [here.](CAD-files)
+We used a total of (sevenz) 3D printed parts on this project. You can find them [here.](CAD-files)
 
 
 # Acknowledgements
