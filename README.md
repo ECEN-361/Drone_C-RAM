@@ -2,18 +2,31 @@
 
 **Introduction**
 
-This project is a lightweight, portable, cheap, and effective response to malicious drones. Below you'll find a more in depth look at the requirements for this project, as well as other information necessary for operation and installation (subject to change. just coming up with stuff)
+This C-RAM is what came of an idea for a semester-long project for our embedded systems class. We wanted to really challenge ourselves and engineer something exciting. idfk
 
 **Challenges and Solutions**
+- needed coords from py program
+- rpi not supplying enough to stepper drivers
+
+obviously not finished
 
 **Timeline**
+
+(this doesn't have to stay. this is more of a log for the final report)
+- Working model with object detection (10/14/25)
+- Finished printing and received all parts to build the project (10/20/25)
+- Project assembled (10/22/25)
+- Motor control working ()
+- PID controller implemented, motor control refined ()
+- Turret locking on people ()
+- AI trained on drones ()
 
 **Testing and Results**
 
 
 # Project Capabilities
 
-The Drone C-RAM features rotating up to 25rpm, drone detection with the Raspberry Pi AI camera, tracking / target leading capabilites, and precise motor control with a software proportional-integral-derivative (PID) controller.
+The Drone C-RAM features rotating up to 25rpm, drone detection with the Raspberry Pi AI camera, tracking / target leading capabilites, and precise motor control with a PID controller.
 
 The target-leading mechanism is based off of the target's position and speed. The basic idea is described below (pseudo code): 
 
@@ -69,6 +82,8 @@ while (1) {
 
 # Hardware Components
 
+This C-RAM was not cheap. This was a project we were excited about, so we spared no expense.
+
 * (5) 5mm x 250mm 304 Stainless Steel Solid Round Rod [(+)](https://www.amazon.com/dp/B082ZNJR7D?ref=ppx_yo2ov_dt_b_fed_asin_title&th=1)
 * (12) Set Screw Collars [(+)](https://www.amazon.com/dp/B0F9P5CNSL?ref=ppx_yo2ov_dt_b_fed_asin_title&th=1)
 * (15) Ball Bearings 5mm Bore 16mm OD [(+)](https://www.amazon.com/dp/B0CJFSBRTJ?ref=ppx_yo2ov_dt_b_fed_asin_title&th=1)
@@ -95,7 +110,7 @@ while (1) {
 
 ## CAD Files
 
-We used a total of (sevenz) 3D printed parts on this project. You can find them [here.](CAD-files)
+We used a total of (seven) 3D printed parts on this project. You can find them [here.](CAD-files)
 
 
 # Acknowledgements
