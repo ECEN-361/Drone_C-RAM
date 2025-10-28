@@ -18,16 +18,16 @@ The Drone C-RAM features rotating up to 25rpm, drone detection with the Raspberr
 The target-leading mechanism is based off of the target's position and speed. The basic idea is described below (pseudo code): 
 
 ```c
-  int x = 250;
-  int y = 300;
-  int dx = 0;
-  int dy = 0;
+int x = 250;
+int y = 300;
+int dx = 0;
+int dy = 0;
 
 while (1) {
-  target(x, y); // A target at x, y
+  target(x, y);  // A target at x, y
   x = x + dx;
   y = y + dy;
-  if (x > 200) { // causes the movement of the target
+  if (x > 200) {  // causes the movement of the target
     dx--;
   } else if (x < 200) {
     dx++;
@@ -44,8 +44,7 @@ while (1) {
   crosshair(x+10*dx, y+10*dy, x+10*dx, y+10*dy);
 }
 ```
-
-![target-leading](Media/proposed-tracking-method.gif)
+<img src="Media/proposed-tracking-method.gif" alt="drawing" width="492" height="492"/>
 
 We wanted a PID controller to turn the turret smoothly. We chose an arduino uno to control the stepper motors because our TB6600s needed 5V. We made an incredibly basic implementation of a PID controller because it just needed to smooth the turret rotation. The basic idea is again below in pseudo code. The actual program in practice is more complicated because we have upper and lower bounds for our motors and timers, can't accelerate past a certain value, etc.:
 
@@ -57,12 +56,12 @@ double dx = 0;
 double dy = 0;
 
 while (1) {
-  lead_target(mouseX, mouseY)
+  lead_target(mouseX, mouseY)  // the coords RPI5 would be sending to the arduino
   actual_crosshair(x, y)
   x = x + dx
   y = y + dy
-  dx = 0.2*(mouseX-x)
-  dy = 0.2*(mouseY-y)
+  dx = 0.2*(mouseX-x)  // appraoches "target" at speeds as a function 
+  dy = 0.2*(mouseY-y)  // of how close it is to the target
 }
 ```
 
