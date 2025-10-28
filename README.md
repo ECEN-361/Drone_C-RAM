@@ -15,7 +15,7 @@ This project is a lightweight, portable, cheap, and effective response to malici
 
 The Drone C-RAM features rotating up to 25rpm, drone detection with the Raspberry Pi AI camera, tracking / target leading capabilites, and precise motor control with a software proportional-integral-derivative (PID) controller.
 
-The target-leading mechanism is based off of the target's position and speed. The basic idea is best described below (pseudo code): 
+The target-leading mechanism is based off of the target's position and speed. The basic idea is described below (pseudo code): 
 
 ```c
   int x = 250;
@@ -23,18 +23,18 @@ The target-leading mechanism is based off of the target's position and speed. Th
   int dx = 0;
   int dy = 0;
 
-while(i) {
+while (1) {
   target(x, y); // A target at x, y
   x = x + dx;
   y = y + dy;
-  if(x > 200){ // causes the movement of the target
+  if (x > 200) { // causes the movement of the target
     dx--;
-  }else if(x < 200){
+  } else if (x < 200) {
     dx++;
   }
-  if(y > 200){
+  if (y > 200) {
     dy--;
-  }else if(y < 200){
+  } else if (y < 200) {
     dy++;
   }
   // This crosshair leads the target by an arbitrary "10" units.
@@ -46,6 +46,27 @@ while(i) {
 ```
 
 ![target-leading](Media/proposed-tracking-method.gif)
+
+We wanted a PID controller to turn the turret smoothly. We chose an arduino uno to control the stepper motors because our TB6600s needed 5V. We made an incredibly basic implementation of a PID controller because it just needed to smooth the turret rotation. The basic idea is again below in pseudo code. The actual program in practice is more complicated because we have upper and lower bounds for our motors and timers, can't accelerate past a certain value, etc.:
+
+```c
+
+int x = 100;
+int y = 100;
+double dx = 0;
+double dy = 0;
+
+while (1) {
+  lead_target(mouseX, mouseY)
+  actual_crosshair(x, y)
+  x = x + dx
+  y = y + dy
+  dx = 0.2*(mouseX-x)
+  dy = 0.2*(mouseY-y)
+}
+```
+
+![pid-movement](Media/proposed-pid-controller.gif)
 
 # Hardware Components
 
