@@ -5,8 +5,8 @@ const int dir2out  = 11;
 
 const int stepsPerTest = 150; // total steps per move
 const int startDelay = 10000;   // slowest delay (µs)
-const int minDelay = 100;     // fastest delay (µs)800 max
-const int rampSteps = 100;    // how many steps to ramp up/down ~100 min
+const int minDelay = 2000;     // fastest delay (µs)800 max
+const int rampSteps = 15;    // how many steps to ramp up/down ~100 min
 
 void setup() {
   pinMode(step1out, OUTPUT);
@@ -33,7 +33,6 @@ void loop() {
   //digitalWrite(dir2out, LOW);
   rampedMove(stepsPerTest);
   delay(3000);
-
 }
 
 void rampedMove(int stepsTotal) {
@@ -47,9 +46,6 @@ void rampedMove(int stepsTotal) {
   }
 
   // --- CONSTANT SPEED PHASE ---
-    while (true){
-    doStep(minDelay);
-  }
   for (int i = rampSteps; i < stepsTotal - rampSteps; i++) {
     doStep(minDelay);
   }
@@ -62,10 +58,10 @@ void rampedMove(int stepsTotal) {
 }
 
 void doStep(int delayTime) {
-  //digitalWrite(step1out, LOW);
+  digitalWrite(step1out, LOW);
   digitalWrite(step2out,LOW);
   delayMicroseconds(delayTime);
-  //digitalWrite(step1out, HIGH);
+  digitalWrite(step1out, HIGH);
   digitalWrite(step2out, HIGH);
   delayMicroseconds(delayTime);
 }
