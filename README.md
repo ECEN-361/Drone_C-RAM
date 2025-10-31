@@ -2,21 +2,28 @@
 
 **Introduction**
 
-This C-RAM is what came of an idea for a semester-long project for our embedded systems class. We wanted to really challenge ourselves and engineer something exciting. idfk
+ML vision air defense turret prototype. Inspired by C-RAM/CIWS systems. Intended to combat small drones at close range, as a last line of defense. \
 
-**Challenges and Solutions**
-- needed coords from py program
-- rpi not supplying enough to stepper drivers
+**Challenges**
+- Learning to interface with the raspberry pi AI cam with integrated IMX500 ASIC to run ML locally. 
+- Developing a robust driver for dual TB6600s and NEMA 17 stepper motors.
+- Designing a printable frame, utilizing common and widely available hardware. (shafts, bearings, belts, etc...)
+- Accurately calculating target lead
 
-obviously not finished
+**Solutions**
+- The Libcamera library for the pi AI cam has been renamed rpicam, Libcamera is no longer in use. Our python script utilizes picamera2 to run a mobilenetSSD model, and cv2 to draw center mass points for output bounding boxes.  
+- Finding max PUL speeds for our motors to avoid overloading and skipping. Finding min PUL pulse timing for smooth motion with reasonable micro-stepping. Finding optimal torque curves to avoid belt skipping and jitter. Using Arduino to drive TB6600s on 5v, to supply enough voltage and avoid Linux operating system real time control issues. By offloading stepper control to a bare metal micro controller we achieved smooth and precise control.
+- We chose to use standard 3d printer parts for most of the hardware on the frame for accessibility and standardization. There are a couple random odds and ends like a 4" turntable bearing and a 6 wire gold contact slip joint for 360 degree rotation.
+- 
+
+IN PROGRESS
 
 **Timeline**
 
-(this doesn't have to stay. this is more of a log for the final report)
 - Working model with object detection (10/14/25)
 - Finished printing and received all parts to build the project (10/20/25)
 - Project assembled (10/22/25)
-- Motor control working ()
+- Motor control working (10/29/25)
 - PID controller implemented, motor control refined ()
 - Turret locking on people ()
 - AI trained on drones ()
