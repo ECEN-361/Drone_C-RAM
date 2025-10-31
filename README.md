@@ -12,7 +12,7 @@ ML vision air defense turret prototype. Inspired by C-RAM/CIWS systems. Intended
 
 **Solutions**
 - The Libcamera library for the pi AI cam has been renamed rpicam, Libcamera is no longer in use. Our python script utilizes picamera2 to run a mobilenetSSD model, and cv2 to draw center mass points for output bounding boxes.  
-- Finding max PUL speeds for our motors to avoid overloading and skipping. Finding min PUL pulse timing for smooth motion with reasonable micro-stepping. Finding optimal torque curves to avoid belt skipping and jitter. Using Arduino to drive TB6600s on 5v, to supply enough voltage and avoid Linux operating system real time control issues. By offloading stepper control to a bare metal micro controller we achieved smooth and precise control.
+- Finding max PUL speeds for our motors to avoid overloading and skipping. Finding min PUL pulse timing for smooth motion with reasonable micro-stepping. Finding optimal torque curves to avoid belt skipping and jitter. Method for finding these limits was trial and error, changing pusle speed in software and testing movements for hours. We settled on driving the TB6600s with arduino to supply the required 5v input signals and avoid Linux operating system real time control issues. By offloading stepper control to a bare metal micro controller we achieved smooth and precise control.
 - We chose to use standard 3d printer parts for most of the hardware on the frame for accessibility and standardization. There are a couple random odds and ends like a 4" turntable bearing and a 6 wire gold contact slip joint for 360 degree rotation.
 - 
 
