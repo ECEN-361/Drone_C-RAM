@@ -1,23 +1,16 @@
 # Project Overview
 
-
-https://github.com/user-attachments/assets/fac1d1c9-d7b9-4e7d-9257-4cd91722cc6a
-
-
 **Introduction**
 ML vision air defense turret prototype. Inspired by C-RAM/CIWS systems. Intended to combat small drones at close range, as a last line of defense. \
 
-**Challenges**
-- Learning to interface with the raspberry pi AI cam with integrated IMX500 ASIC to run ML locally. 
+**Challenges & solutions**
+- Learning to interface with the raspberry pi AI cam with integrated IMX500 ASIC to run ML locally.
+    - The Libcamera library for the pi AI cam has been renamed rpicam, Libcamera is no longer in use. Our python script utilizes picamera2 to run a mobilenetSSD model, and cv2 to draw center mass points for output bounding boxes.
 - Developing a robust driver for dual TB6600s and NEMA 17 stepper motors.
+    - Finding max PUL speeds for our motors to avoid overloading and skipping. Finding min PUL pulse timing for smooth motion with reasonable micro-stepping. Finding optimal torque curves to avoid belt skipping and jitter. Method for finding these limits was trial and error, changing pusle speed in software and testing movements for hours. We settled on driving the TB6600s with arduino to supply the required 5v input signals and avoid Linux operating system real time control issues. By offloading stepper control to a bare metal micro controller we achieved smooth and precise control.
 - Designing a printable frame, utilizing common and widely available hardware. (shafts, bearings, belts, etc...)
+    - We chose to use standard 3d printer parts for most of the hardware on the frame for accessibility and standardization. There are a couple random odds and ends like a 4" turntable bearing and a 6 wire gold contact slip joint for 360 degree rotation.
 - Accurately calculating target lead
-
-**Solutions**
-- The Libcamera library for the pi AI cam has been renamed rpicam, Libcamera is no longer in use. Our python script utilizes picamera2 to run a mobilenetSSD model, and cv2 to draw center mass points for output bounding boxes.  
-- Finding max PUL speeds for our motors to avoid overloading and skipping. Finding min PUL pulse timing for smooth motion with reasonable micro-stepping. Finding optimal torque curves to avoid belt skipping and jitter. Method for finding these limits was trial and error, changing pusle speed in software and testing movements for hours. We settled on driving the TB6600s with arduino to supply the required 5v input signals and avoid Linux operating system real time control issues. By offloading stepper control to a bare metal micro controller we achieved smooth and precise control.
-- We chose to use standard 3d printer parts for most of the hardware on the frame for accessibility and standardization. There are a couple random odds and ends like a 4" turntable bearing and a 6 wire gold contact slip joint for 360 degree rotation.
-- 
 
 IN PROGRESS
 
